@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './assets/css/App.css';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <h1 className="text-center w-10">Coba gan</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
