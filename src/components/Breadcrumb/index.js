@@ -4,8 +4,7 @@ import propTypes from 'prop-types';
 
 function Breadcrumb({List}) {
   return (
-    <div>
-         <section className="bg-gray-100 py-8 px-4">
+    <section className="bg-gray-100 py-8 px-4">
       <div className="container mx-auto">
         <ul className="breadcrumb">
           {List?.map?.(( item, index) => {
@@ -22,7 +21,6 @@ function Breadcrumb({List}) {
         </ul>
       </div>
     </section>
-    </div>
   );
 }
 

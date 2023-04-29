@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../parts/Header";
-import Breadcrumb from "../components/Breadcrumb/index";
+import Breadcrumb from "../components/Breadcrumb";
 // import JustArrived from '../parts/HomePage/JustArrived';
 // import BrowseRoom from '../parts/HomePage/BrowseRoom';
-import Clients from "../parts/Clients";
+// import Clients from "../parts/Clients";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
 import ProductDetails from "../parts/Details/ProductDetails";
@@ -17,7 +17,7 @@ function Details() {
       <Header theme="black" />
 
       <Breadcrumb
-        list={[
+        List={[
           { url: "/", name: "Home" },
           { url: "/categories/19233", name: "Office Room" },
           { url: "/categories/19233/products/1339", name: "Details" },
