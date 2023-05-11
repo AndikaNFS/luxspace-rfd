@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import useAsync from "../../helpers/hooks/useAsync";
 
+import useAsync from "../../helpers/hooks/useAsync";
 import fetch from "../../helpers/fetch";
 
 function Loading({ ratio = {} }) {
