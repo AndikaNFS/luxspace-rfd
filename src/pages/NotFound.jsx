@@ -1,21 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "../parts/Header";
-import Breadcrumb from "../components/Breadcrumb";
+import PageErrorMessage from "../parts/PageErrorMessage";
+
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
-import PageErrorMessage from "../parts/PageErrorMessage";
+
+import Document from "../parts/Document";
 
 function NotFound() {
   return (
-    <>
+    <Document>
       <Header />
 
       <PageErrorMessage />
 
       <Sitemap />
       <Footer />
-    </>
+    </Document>
   );
 }
 

@@ -9,6 +9,8 @@ import Suggestion from "../parts/Details/Suggestion";
 
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
+import Document from "../parts/Document";
+import PageErrorMessage from "../parts/PageErrorMessage";
 
 import useAsync from "./../helpers/hooks/useAsync";
 import fetch from "./../helpers/fetch";
@@ -106,35 +108,50 @@ function LoadingSuggestion() {
 function Details() {
   const { idp } = useParams();
 
-  const { data, run, isLoading } = useAsync();
+  const { data, error, run, isLoading, isError } = useAsync();
 
   useEffect(() => {
     run(fetch({ url: `/api/products/${idp}` }));
-  }, [run]);
+  }, [run, idp]);
 
   console.log(data);
 
   return (
     <>
-      <Header theme="black" />
+      <Document>
+        <Header theme="black" />
 
-      <Breadcrumb
-        list={[
-          { url: "/", name: "Home" },
-          { url: "/categories/19233", name: "Office Room" },
-          { url: "/categories/19233/products/1339", name: "Details" },
-        ]}
-      />
-      {/* <LoadingProductDetails /> */}
-      {isLoading ? <LoadingProductDetails /> : <ProductDetails data={data} />}
-      {isLoading ? (
-        <LoadingSuggestion />
-      ) : (
-        <Suggestion data={data?.relatedProducts || {}} />
-      )}
-      {/* <Clients /> */}
-      <Sitemap />
-      <Footer />
+        <Breadcrumb
+          list={[
+            { url: "/", name: "Home" },
+            { url: "/categories/19233", name: "Office Room" },
+            { url: "/categories/19233/products/1339", name: "Details" },
+          ]}
+        />
+
+        {isError ? (
+          <PageErrorMessage
+            title="Product Not Found"
+            body={error.errors.message}
+          />
+        ) : (
+          <>
+            {isLoading ? (
+              <LoadingProductDetails />
+            ) : (
+              <ProductDetails data={data} />
+            )}
+            {isLoading ? (
+              <LoadingSuggestion />
+            ) : (
+              <Suggestion data={data?.relatedProducts || {}} />
+            )}
+          </>
+        )}
+
+        <Sitemap />
+        <Footer />
+      </Document>
     </>
   );
 }

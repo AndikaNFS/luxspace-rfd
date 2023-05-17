@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
+import "../../helpers/format/currency";
 
 import { useGlobalContext } from "./../../helpers/hooks/useGlobalContext";
 // cek source code useGlobalContext lagi
 
 function ProductDetails({ data }) {
-  const [slider, setSlider] = useState(() => data?.imgUrl?.[0] || "");
+  const [slider, setSlider] = useState(() => data?.imgUrls?.[0] || "");
 
   const { dispatch } = useGlobalContext();
 
@@ -14,7 +15,7 @@ function ProductDetails({ data }) {
       <div className="flex flex-wrap my-4 md:my-12">
         <div className="w-full md:hidden px-4">
           <h2 className="text-5xl font-semibold">{data.title}</h2>
-          <span className="text-xl">IDR {data.price}</span>
+          <span className="text-xl">{data.price.currency()}</span>
         </div>
         <div className="flex-1">
           <div className="slider">
@@ -55,7 +56,7 @@ function ProductDetails({ data }) {
         </div>
         <div className="flex-1 px-4 md:p-6">
           <h2 className="text-5xl font-semibold">{data.title}</h2>
-          <p className="text-xl">IDR {data.price}</p>
+          <p className="text-xl">IDR {data.price.currency()}</p>
 
           <button
             className="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex"
